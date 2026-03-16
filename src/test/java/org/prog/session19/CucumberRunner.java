@@ -13,7 +13,8 @@ import java.sql.SQLException;
         glue = "org.prog.session19.steps",
         plugin = {
                 "html:target/cucumber-report.html",
-                "json:target/cucumber-reports/Cucumber.json"
+                "json:target/cucumber-reports/Cucumber.json",
+                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
         }
 )
 public class CucumberRunner extends AbstractTestNGCucumberTests {

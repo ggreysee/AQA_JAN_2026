@@ -8,11 +8,11 @@ import org.prog.session16.dto.NameDto;
 import org.prog.session16.dto.PersonDto;
 import org.prog.session16.dto.ResultsDto;
 import org.prog.session19.DataHolder;
+import org.testng.Assert;
 
-import javax.xml.crypto.Data;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class MySteps {
 
@@ -40,6 +40,8 @@ public class MySteps {
 
     @Then("Something happens with {}")
     public void somethingHappens(MyEnum myEnum) {
+        Random random = new Random();
+        Assert.assertTrue(random.nextInt(10) >= 7, "random issue!");
         System.out.println("Something happens with " + myEnum.name());
     }
 

@@ -4,14 +4,15 @@ Feature: my web feature
     Given Preconditions are "OK"
 
   @wip
-  Scenario: my scenario
+  @severity=critical
+  Scenario: my scenario 1
     Given Set user password to "aaabcabcaaabcabc1"
     Given There parameters are "param 1" and "param 2"
     When I do something 5 times
     Then Something happens with VALUE_3
 
   @wip
-  Scenario Outline: my scenario
+  Scenario Outline: my scenario 2
     Given Set user password to "<password>"
     Given There parameters are "param 1" and "param 2"
     When I do something 5 times
@@ -24,6 +25,7 @@ Feature: my web feature
 
 
   @wip
+  @severity=blocker
   Scenario: demo data table
     Given Data table list demo
       | String 1 |

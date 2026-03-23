@@ -3,7 +3,7 @@
 <suite name="Suite1" verbose="1">
     <test name="Feature 1 and 2">
         <classes>
-            <class name="org.prog.session19.CucumberRunner"/>
+            <class name="org.prog.session20.CucumberRunner"/>
         </classes>
     </test>
 </suite>

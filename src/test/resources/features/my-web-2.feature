@@ -1,5 +1,6 @@
 Feature: Test with API + DB + Selenium
 
+  @wip
   Scenario: Retrieve, store and google random people
     #API
     Given I request 3 random people from service as "crowd_1"
@@ -28,6 +29,7 @@ Feature: Test with API + DB + Selenium
     When I accept cookies if present
     Then I set search field to "random_group_2" first and last name
 
+  @wip
   Scenario: Retrieve, store and google random people
     Given List of names as "characters"
       | Harry Potter |

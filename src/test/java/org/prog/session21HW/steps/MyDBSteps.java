@@ -24,41 +24,43 @@ public class MyDBSteps {
                 String dbPrice = resultSet.getString("price");
                 if (!MyGoogleSteps.prices.get(i).equals(dbPrice)) {
                     throw new RuntimeException("Price mismatch");
-                } else {
-                    System.out.println("ENTER ELSE");
-                    PreparedStatement insertStatement = connection.prepareStatement(
-                            "INSERT INTO phones (model, price)" +
-                                    "VALUES (?, ?);"
-                    );
-                    insertStatement.setString(1, MyGoogleSteps.models.get(i));
-                    insertStatement.setString(2, MyGoogleSteps.prices.get(i));
-                    insertStatement.execute();
-                    System.out.println("INSERT DONE");
-
                 }
 
-            }
-
-        }
-    }
-
-        @Then("Prices should match or be saved")
-        public void checkResult() throws SQLException {
-            for (int i = 0; i < MyGoogleSteps.models.size(); i++) {
-                PreparedStatement preparedStatement = connection.prepareStatement(
-                        "SELECT * FROM phones WHERE model = ?"
+            } else {
+                System.out.println("ENTER ELSE");
+                PreparedStatement insertStatement = connection.prepareStatement(
+                        "INSERT INTO phones (model, price)" +
+                                "VALUES (?, ?);"
                 );
-                preparedStatement.setString(1, MyGoogleSteps.models.get(i));
-                ResultSet resultSet = preparedStatement.executeQuery();
-                if (!resultSet.next()) {
-                    throw new RuntimeException("Phone not found in DB");
-                }
+                insertStatement.setString(1, MyGoogleSteps.models.get(i));
+                insertStatement.setString(2, MyGoogleSteps.prices.get(i));
+                insertStatement.execute();
+                System.out.println("INSERT DONE");
 
-                String dbPrice = resultSet.getString("price");
-                if (!MyGoogleSteps.prices.get(i).equals(dbPrice))
-                    throw new RuntimeException("Price mismatch");
+            }
+        }
+
+    }
+
+
+    @Then("Prices should match or be saved")
+    public void checkResult() throws SQLException {
+        for (int i = 0; i < MyGoogleSteps.models.size(); i++) {
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "SELECT * FROM phones WHERE model = ?"
+            );
+            preparedStatement.setString(1, MyGoogleSteps.models.get(i));
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (!resultSet.next()) {
+                throw new RuntimeException("Phone not found in DB");
             }
 
+            String dbPrice = resultSet.getString("price");
+            if (!MyGoogleSteps.prices.get(i).equals(dbPrice))
+                throw new RuntimeException("Price mismatch");
         }
+
     }
+}
+
 

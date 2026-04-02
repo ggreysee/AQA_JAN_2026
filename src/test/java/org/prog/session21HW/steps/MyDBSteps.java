@@ -25,7 +25,6 @@ public class MyDBSteps {
                 if (!MyGoogleSteps.prices.get(i).equals(dbPrice)) {
                     throw new RuntimeException("Price mismatch");
                 }
-
             } else {
                 System.out.println("ENTER ELSE");
                 PreparedStatement insertStatement = connection.prepareStatement(
